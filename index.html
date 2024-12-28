@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open PI</title>
+    <style>
+        #navbox {
+            min-width: 25vw;
+            max-width: 25vw;
+            background-color: #000404;
+            border-radius: 5%;
+            border-style: solid;
+            border-color: white;
+            margin-top: 5%;
+            justify-content: space-around;
+            display: block;
+        }
+
+        .biz-card {
+            height: 30%;
+            border-radius: 5%;
+            border-style: solid;
+            width: 90%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+            background-color: #000404;
+            border-color: white;
+        }
+
+        .logo {
+            width: 20%;
+            height: 14%;
+        }
+
+        .navbutton {
+            min-width: 70%;
+            min-height: 10%;
+            border-style: solid;
+            background-color: #000404;
+            border-color: white;
+            border-bottom-left-radius: 30px;
+            border-top-left-radius: 30px;
+            font-size: 20pt;
+            text-align: end;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+        }
+
+        .navbutton:hover {
+            transform: translateX(100px);
+            transition: 0.7s;
+        }
+
+        header {
+            border-radius: 5%;
+            border-style: solid;
+            border-collapse: collapse;
+            height: 200px;
+            border-color: #000404;
+            text-align: center;
+        }
+
+        main {
+            width: 70vw;
+            height: 90vh;
+            margin-top: 5%;
+            align-self: end;
+            border-radius: 5%;
+            display: table-row-group;
+            background-color: #000404;
+            padding: 10px;
+        }
+
+        .container {
+            display: inline-flex;
+            min-height: 99vh;
+            max-width: 99vw;
+            padding: 5px;
+        }
+
+        .headlogo {
+            width: 30vw;
+            height: 10vh;
+            border-width: 1px;
+            font-size: 30pt;
+            background-color: clear;
+        }
+
+        * {
+            background-color: #000404;
+            font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Open PI</h1>
+        <h4>Reach out via social media (<a href="https://instagram.com/opi.intel" target="_blank">Instagram</a>) (<a href="https://telegram.me/opi_intel" target="_blank">Telegram</a>) or contact the phone number on the physical business card.</h4>
+        <p><u>DISCLAIMER</u>
+            <i>My investigations are conducted using open-source intelligence and are not performed under a licensed private investigator credential. As such, the information we provide may not be admissible in court proceedings.
+            However, my services are designed to deliver reliable, actionable insights for private matters, such as personal decision-making, business strategy, and risk assessment. I focus on empowering clients with critical information to make informed decisions in non-litigation contexts.
+            If you require court-admissible evidence or licensed investigative services, I recommend consulting with a licensed private investigator.</i>
+        </p>
+    </header>
+    <br>
+
+    <div class="container">
+        <aside id="navbox">
+            <p>+ Hover your mouse over each service to learn more.</p>
+            <button class="navbutton" id="mynet">Journalism Support</button>
+            <button class="navbutton" id="pr">Property Reconnaissance</button>
+            <button class="navbutton" id="so">User Profiling</button>
+            <button class="navbutton" id="ot">Online Threat Analysis</button>
+            <button class="navbutton" id="co">Competitive Analysis</button>
+            <button class="navbutton" id="pe">Pre-Event Reconnaissance</button>
+            <button class="navbutton" id="cu">Custom Investigations</button>
+        </aside>
+        <main class="feed" id="feed">
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const descriptions = {
+                mynet: "Assist journalists by gathering and analyzing open-source information to uncover hidden facts, verify claims, and provide context for investigative reporting. This can include names, criminal records, testimonials, businesses, employees, volunteers, and more. Reach out with an inquiry to learn how I can assist you with your project.",
+                pr: "Perform thorough research on property, analyzing open-source records, satellite imagery, and other public data to provide detailed overviews. This may come with recommendations for physical security and access controls, as well as information regarding crime trends and potential threats in the area.",
+                so: "Identify, verify, and map the digital footprint of a user or users. This may come with locations, IP addresses, domains, emails, passwords, and more.",
+                ot: "Assess an online threat in relation to yourself, or assess and identify inside threats.",
+                co: "Gather intelligence on competitors’ strategies, products, and market activities to provide businesses with a competitive edge.",
+                pe: "We conduct detailed reconnaissance to identify potential vulnerabilities or challenges before any event, ensuring smooth operations.",
+                cu: "Tailored to your unique needs, I can uncover unseen details or address complex challenges with actionable insights in regards to the presented circumstances."
+            };
+
+            const buttons = document.querySelectorAll('.navbutton');
+            const feed = document.getElementById('feed');
+
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', () => {
+                    const desc = descriptions[button.id];
+                    feed.textContent = desc || "Description not available.";
+                });
+
+                button.addEventListener('mouseout', () => {
+                    feed.textContent = ""; // Clear the feed when the mouse leaves the button
+                });
+            });
+        });
+    </script>
+</body>
+</html>
