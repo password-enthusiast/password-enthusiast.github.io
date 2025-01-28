@@ -3,8 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open PI</title>
+    <title>Open PI - OSINT Private Investigations</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Open PI provides open-source intelligence (OSINT) investigations, including property reconnaissance, user profiling, event security, and competitive analysis.">
+    <meta name="keywords" content="OSINT, private investigator, property reconnaissance, cybersecurity, journalism support, online investigations, user profiling, digital forensics">
+    <meta name="author" content="Open PI">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Open PI - OSINT Private Investigations">
+    <meta property="og:description" content="Get accurate intelligence using open-source data for security, property recon, user profiling, and investigative journalism.">
+    <meta property="og:image" content="https://example.com/preview.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card for social sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Open PI - OSINT Private Investigations">
+    <meta name="twitter:description" content="We provide intelligence through OSINT techniques for security, reconnaissance, and investigations.">
+    <meta name="twitter:image" content="https://example.com/preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://example.com">
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Open PI",
+        "url": "https://example.com",
+        "description": "A private investigation service leveraging open-source intelligence (OSINT) to gather actionable intelligence on people, properties, and businesses.",
+        "sameAs": [
+            "https://twitter.com/OpenPI",
+            "https://linkedin.com/company/openpi",
+            "https://telegram.me/opi_intel"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-555-555-5555",
+            "contactType": "customer service"
+        }
+    }
+    </script>
+
+    <!-- Load Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
             background-color: #000404;
@@ -12,23 +62,33 @@
             font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
         }
         .navbutton:hover {
-            transform: translateX(50px);
-            transition: 0.7s;
+            transform: translateX(20px);
+            transition: transform 0.4s ease-in-out;
         }
+        .feed {
+            transition: opacity 0.4s ease-in-out;
+        }
+.objective-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+.objective-card:hover {
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
     <header class="text-center py-4">
-        <h1>Open PI</h1>
-        <h4>Reach out via <a href="https://telegram.me/opi_intel" target="_blank">Telegram</a> or contact the phone number on the physical business card.</h4>
-        <p><u>DISCLAIMER</u>
-            <i>My investigations are conducted using open-source intelligence and are NOT performed under a licensed private investigator credential.</i>
-        </p>
+        <h1>Open PI - OSINT Investigations</h1>
+        <h4>Contact us via <a href="https://telegram.me/opi_intel" target="_blank">Telegram</a> or the phone number on our business card.</h4>
+        <p><u>DISCLAIMER</u> <i>All investigations are conducted through open-source intelligence and do not fall under licensed private investigation services.</i></p>
     </header>
-    
+
     <div class="container d-flex flex-column flex-md-row align-items-start">
-        <aside id="navbox" class="p-3 bg-dark text-white border border-light rounded-3" style="min-width: 25vw; max-width: 25vw;">
-            <p>+ Hover your mouse over each service to learn more.</p>
+        <nav id="navbox" class="p-3 bg-dark text-light border border-light rounded-3" style="min-width: 25vw; max-width: 25vw;">
             <div class="d-grid gap-2">
                 <button class="btn btn-outline-light navbutton" id="mynet">Journalism Support</button>
                 <button class="btn btn-outline-light navbutton" id="pr">Property Reconnaissance</button>
@@ -37,9 +97,15 @@
                 <button class="btn btn-outline-light navbutton" id="pe">Pre-Event Reconnaissance</button>
                 <button class="btn btn-outline-light navbutton" id="cu">Custom Investigations</button>
             </div>
-        </aside>
-        <main class="feed bg-dark text-white rounded-3 p-3 flex-grow-1" id="feed" style="min-height: 40vh; margin-left: 2rem;">
+        </nav>
+        <main class="feed bg-dark text-light rounded-3 p-3 flex-grow-1" id="feed" style="margin-left: 2rem;">
+            <p>Hover over a service to see details.</p>
         </main>
+    </div>
+<!-- Ongoing Objectives Section -->
+    <div class="container mt-4">
+        <h2 class="text-center">Ongoing Non-Profit Objectives</h2>
+        <div id="objectives-container" class="row"></div>
     </div>
 
     <script>
@@ -58,15 +124,39 @@
 
             buttons.forEach(button => {
                 button.addEventListener('mouseover', () => {
-                    const desc = descriptions[button.id];
-                    feed.textContent = desc || "Description not available.";
+                    feed.style.opacity = 0;
+                    setTimeout(() => {
+                        feed.innerHTML = `<p>${descriptions[button.id] || "Description not available."}</p>`;
+                        feed.style.opacity = 1;
+                    }, 200);
                 });
 
                 button.addEventListener('mouseout', () => {
-                    feed.textContent = ""; // Clear the feed when the mouse leaves the button
+                    feed.style.opacity = 0;
+                    setTimeout(() => {
+                        feed.innerHTML = "<p>Hover over a service to see details.</p>";
+                        feed.style.opacity = 1;
+                    }, 200);
                 });
             });
+    // Ongoing Objectives Data
+            const objectives = [
+             
+                "Analyzing data in relation to the MMIW phenomenon of Alberta, Canada.",
+                "Documenting online behavior and footage that are reminiscient of trafficking.",
+
+            ];
+
+            const objectivesContainer = document.getElementById("objectives-container");
+
+            objectives.forEach(obj => {
+                const div = document.createElement("div");
+                div.classList.add("col-md-4");
+                div.innerHTML = `<div class="objective-card"><p>${obj}</p></div>`;
+                objectivesContainer.appendChild(div);
+            });
         });
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
